@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    # config客户端配置,和ConfigServer通信，并告知ConfigServer希望获取的配置信息在哪个⽂件中
+    config:
+      name: lagou-service-resume #配置⽂件名称
+      profile: dev #后缀名称
+      label: myq #分⽀名称
+      uri: http://localhost:9006 #ConfigServer配置中⼼地址
+  rabbitmq:
+    host: 101.132.39.157
+    port: 5672
+    username: root
+    password: 123456
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: 123456
+  jpa:
+    database: MySQL
+    show-sql: true
+    hibernate:
+      naming:
+        #避免将驼峰命名转换为下划线命名
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka01:8761/eureka,http://eureka02:8762/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}:@project.version@
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # 暴露健康接口的细节
+  endpoint:
+    health:
+      show-details: always
