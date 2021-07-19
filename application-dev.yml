@@ -1,16 +1,4 @@
 spring:
-  cloud:
-    # config客户端配置,和ConfigServer通信，并告知ConfigServer希望获取的配置信息在哪个⽂件中
-    config:
-      name: lagou-service-resume #配置⽂件名称
-      profile: dev #后缀名称
-      label: myq #分⽀名称
-      uri: http://localhost:9006 #ConfigServer配置中⼼地址
-  rabbitmq:
-    host: 101.132.39.157
-    port: 5672
-    username: root
-    password: 123456
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/springcloud?useUnicode=true&characterEncoding=utf8
